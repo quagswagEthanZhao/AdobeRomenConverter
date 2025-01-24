@@ -65,7 +65,7 @@ const ConverterCard: React.FC = (): React.JSX.Element => {
           value={String(input)}
           onChange={handleInputChange}
           type="number"
-          width="80%"
+          width="75%"
           validationState={validationState}
           errorMessage={errorMessage}
         />
