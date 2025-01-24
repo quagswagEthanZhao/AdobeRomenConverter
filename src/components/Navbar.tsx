@@ -11,7 +11,7 @@ import {
 import User from '@spectrum-icons/workflow/User';
 import { useTheme } from '../lib/hooks/useTheme';
 
-const Navbar: React.FC = () => {
+const Navbar: React.FC = (): React.JSX.Element => {
   const { isDarkMode, toggleTheme } = useTheme();
 
   return (
