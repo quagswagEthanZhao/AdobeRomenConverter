@@ -8,7 +8,10 @@ function App(): React.JSX.Element {
   const { isDarkMode } = useTheme();
 
   return (
-    <Provider theme={isDarkMode ? darkTheme : defaultTheme}>
+    <Provider
+      theme={isDarkMode ? darkTheme : defaultTheme}
+      colorScheme={isDarkMode ? 'dark' : 'light'} // Need to set both to avoid different system preference to override this.
+    >
       <Navbar />
       <View height="100vh" backgroundColor="gray-100" padding="size-300">
         <ConverterCard />
