@@ -4,7 +4,7 @@ import { darkTheme, defaultTheme, Provider, View } from '@adobe/react-spectrum';
 import Navbar from './components/Navbar';
 import { useTheme } from './lib/hooks/useTheme';
 
-function App() {
+function App(): React.JSX.Element {
   const { isDarkMode } = useTheme();
 
   return (

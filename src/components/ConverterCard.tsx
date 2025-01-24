@@ -10,7 +10,7 @@ import {
 import useRomanNumeralConverter from '../lib/hooks/useRomanNumeralConverter';
 import { useTheme } from '../lib/hooks/useTheme';
 
-const ConverterCard: React.FC = () => {
+const ConverterCard: React.FC = (): React.JSX.Element => {
   const [input, setInput] = useState<string>('');
   const [validationState, setValidationState] = useState<
     'valid' | 'invalid' | undefined

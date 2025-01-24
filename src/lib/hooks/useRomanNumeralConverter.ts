@@ -22,7 +22,7 @@ const useRomanNumeralConverter = () => {
     });
   };
 
-  const fetchRomanNumeral = async (input: number) => {
+  const fetchRomanNumeral = async (input: number): Promise<void> => {
     setError('');
     setResult('');
     setLoading(true);
