@@ -1,19 +1,51 @@
-import React, { useState } from "react";
-import { View, Flex, TextField, Button, Heading, ProgressCircle } from "@adobe/react-spectrum";
-import { useTheme } from "../context/ThemeContext";
-//import useRomanNumeralConverter from "../../hooks/useRomanNumeralConverter";
+import React, { useState } from 'react';
+import {
+  View,
+  Flex,
+  TextField,
+  Button,
+  Heading,
+  ProgressCircle,
+} from '@adobe/react-spectrum';
+import useRomanNumeralConverter from '../lib/hooks/useRomanNumeralConverter';
+import { useTheme } from '../lib/hooks/useTheme';
 
 const ConverterCard: React.FC = () => {
-  const [input, setInput] = useState<number | null>(null);
-  const {isDarkMode} = useTheme();
-  //const { result, error, loading, convertToRoman } = useRomanNumeralConverter();
+  const [input, setInput] = useState<string>('');
+  const [validationState, setValidationState] = useState<
+    'valid' | 'invalid' | undefined
+  >(undefined);
+  const [errorMessage, setErrorMessage] = useState<string | undefined>();
+  const { result, loading, error, fetchRomanNumeral } =
+    useRomanNumeralConverter();
+  const { isDarkMode } = useTheme();
+  const handleInputChange = (value: string) => {
+    setInput(value);
 
-//   const handleConvert = () => {
-//     if (input !== null) {
-//       convertToRoman(input);
-//     }
-//   };
+    const parsedValue = parseInt(value, 10);
 
+    if (value === '' || isNaN(parsedValue)) {
+      setValidationState('invalid');
+      setErrorMessage('Input must be a valid number.');
+      return;
+    }
+
+    if (parsedValue < 1 || parsedValue > 3999) {
+      setValidationState('invalid');
+      setErrorMessage('Input must be an integer between 1 and 3999.');
+      return;
+    }
+
+    setValidationState('valid');
+    setErrorMessage(undefined); // Clear error message if input is valid
+  };
+
+  const handleConvert = async (_: any) => {
+    const num = parseInt(input);
+    if (validationState === 'valid' && num >= 1 && num <= 3999) {
+      await fetchRomanNumeral(num); // Call the exposed fetch function
+    }
+  };
   return (
     <View
       padding="size-300"
@@ -22,13 +54,7 @@ const ConverterCard: React.FC = () => {
       marginEnd="auto"
       marginTop="size-800"
       borderRadius="large"
-      UNSAFE_style={{
-        margin: "auto",
-        maxWidth: "400px",
-        boxShadow: isDarkMode
-          ? "0 4px 12px rgba(0, 0, 0, 0.7)"
-          : "0 4px 12px rgba(0, 0, 0, 0.2)",
-      }}
+      backgroundColor="default" // Automatically adapts to the theme
     >
       <Flex direction="column" alignItems="center" gap="size-300">
         <Heading level={2} marginBottom="size-300">
@@ -37,22 +63,28 @@ const ConverterCard: React.FC = () => {
         <TextField
           label="Enter a number"
           value={String(input)}
-          onChange={(value) => setInput(parseInt(value, 10) || null)}
+          onChange={handleInputChange}
           type="number"
           width="80%"
+          validationState={validationState}
+          errorMessage={errorMessage}
         />
-        <Button variant="cta" onPress={() => {}} isDisabled={true || input === null}>
+        <Button
+          variant={isDarkMode ? 'primary' : 'cta'}
+          onPress={handleConvert}
+          isDisabled={loading || validationState !== 'valid'}
+        >
           Convert to Roman Numeral
         </Button>
-        {false && <ProgressCircle aria-label="Loading" isIndeterminate />}
-        {true && (
+        {loading && <ProgressCircle aria-label="Loading" isIndeterminate />}
+        {result && (
           <Heading level={4} marginTop="size-200">
-            Roman numeral: {60}
+            Roman numeral: {result}
           </Heading>
         )}
-        {false && (
+        {error && (
           <Heading level={4} marginTop="size-200">
-            {"errror"}
+            {error}
           </Heading>
         )}
       </Flex>
