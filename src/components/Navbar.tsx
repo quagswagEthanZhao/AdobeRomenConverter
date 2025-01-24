@@ -41,7 +41,7 @@ const Navbar: React.FC = () => {
             onChange={toggleTheme}
             aria-label="Toggle dark mode"
           >
-            Dark Mode
+            {isDarkMode ? 'Dark Mode' : 'Light Mode'}
           </Switch>
 
           {/* Account Icon */}
