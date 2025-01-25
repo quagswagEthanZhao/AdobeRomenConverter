@@ -3,7 +3,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import Navbar from './Navbar';
 import { useTheme } from '../../lib/hooks/useTheme';
 
-// Mock the useTheme hook to control theme state in tests
+// Mock Theme hook
 jest.mock('../../lib/hooks/useTheme');
 
 describe('Navbar - Dark Mode Switch', () => {

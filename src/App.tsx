@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { JSX } from 'react';
 import { darkTheme, defaultTheme, Provider, View } from '@adobe/react-spectrum';
 import { useTheme } from './lib/hooks/useTheme';
 import Navbar from './components/NavBar/Navbar';

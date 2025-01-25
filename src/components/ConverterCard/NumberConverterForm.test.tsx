@@ -4,6 +4,7 @@ import { ThemeProvider } from '../../context/ThemeContext';
 import NumberConverterForm from './NumberConverterForm';
 import userEvent from '@testing-library/user-event';
 
+// Mock hooks
 const mockFetchRomanNumeral = jest.fn();
 jest.mock('../../lib/hooks/useRomanNumeralConverter', () => ({
   __esModule: true,
@@ -25,6 +26,7 @@ jest.mock('../../lib/hooks/useTheme', () => ({
 
 describe('NumberConverterForm Component', () => {
   beforeEach(() => {
+    // Clear all mock calls before each test
     jest.clearAllMocks();
   });
 
