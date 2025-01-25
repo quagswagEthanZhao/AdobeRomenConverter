@@ -7,10 +7,10 @@ import {
   Heading,
   ProgressCircle,
 } from '@adobe/react-spectrum';
-import useRomanNumeralConverter from '../lib/hooks/useRomanNumeralConverter';
-import { useTheme } from '../lib/hooks/useTheme';
+import useRomanNumeralConverter from '../../lib/hooks/useRomanNumeralConverter';
+import { useTheme } from '../../lib/hooks/useTheme';
 
-const ConverterCard: React.FC = (): React.JSX.Element => {
+const NumberConverterForm: React.FC = (): React.JSX.Element => {
   const [input, setInput] = useState<string>('');
   const [validationState, setValidationState] = useState<
     'valid' | 'invalid' | undefined
@@ -65,7 +65,7 @@ const ConverterCard: React.FC = (): React.JSX.Element => {
           value={String(input)}
           onChange={handleInputChange}
           type="number"
-          width="75%"
+          width="60%"
           validationState={validationState}
           errorMessage={errorMessage}
         />
@@ -92,4 +92,4 @@ const ConverterCard: React.FC = (): React.JSX.Element => {
   );
 };
 
-export default ConverterCard;
+export default NumberConverterForm;
