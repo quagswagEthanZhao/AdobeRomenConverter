@@ -13,3 +13,12 @@ export interface RomanNumeralResponse {
   input: string;
   output: string;
 }
+
+export interface ErrorBoundaryProps {
+  children: React.ReactNode;
+  fallback: React.ReactNode;
+}
+
+export interface ErrorBoundaryState {
+  hasError: boolean;
+}

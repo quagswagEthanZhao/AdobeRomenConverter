@@ -1,8 +1,8 @@
-import React from 'react';
-import ConverterCard from './components/ConverterCard';
+import React, { JSX } from 'react';
 import { darkTheme, defaultTheme, Provider, View } from '@adobe/react-spectrum';
-import Navbar from './components/Navbar';
 import { useTheme } from './lib/hooks/useTheme';
+import Navbar from './components/NavBar/Navbar';
+import NumberConverterForm from './components/ConverterCard/NumberConverterForm';
 
 function App(): React.JSX.Element {
   const { isDarkMode } = useTheme();
@@ -14,7 +14,7 @@ function App(): React.JSX.Element {
     >
       <Navbar />
       <View height="100vh" backgroundColor="gray-100" padding="size-300">
-        <ConverterCard />
+        <NumberConverterForm />
       </View>
     </Provider>
   );
