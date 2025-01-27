@@ -1,6 +1,6 @@
 # Roman Numeral Converter
 
-This project is a **Roman Numeral Converter** built using **React** and **Adobe React Spectrum** for the front-end UI. The application allows users to input a number, and it converts it into its Roman numeral equivalent. It also provides real-time validation and error handling.
+This project is a **Roman Numeral Converter** client application that is built using **React** and **Adobe React Spectrum** for the front-end UI. The application allows users to input a number, and it converts it into its Roman numeral equivalent. It also provides real-time front-end validation and error handling.
 
 ## How to Build and Run Your Project
 
