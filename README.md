@@ -39,7 +39,7 @@ To run this project, you’ll need:
 git clone https://github.com/quagswagEthanZhao/AdobeRomenConverter-Client.git
 ```
 
-2. Install all dependencies
+2. cd into project root directory and install all dependencies
 
 ```bash
 npm install
