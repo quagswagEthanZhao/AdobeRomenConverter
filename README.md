@@ -1,46 +1,135 @@
-# Getting Started with Create React App
+# Roman Numeral Converter
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a **Roman Numeral Converter** client application that is built using **React** and **Adobe React Spectrum** for the front-end UI. The application allows users to input a number, and it converts it into its Roman numeral equivalent. It also provides real-time front-end validation and error handling.
 
-## Available Scripts
+## How to Build and Run Your Project
 
-In the project directory, you can run:
+### Prerequisites
 
-### `npm start`
+To run this project, you’ll need:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- [Node.js](https://nodejs.org/) (version 14 or higher)
+- [npm](https://www.npmjs.com/) (comes with Node.js)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### For Local Development
 
-### `npm test`
+1. Clone the repository:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+git clone https://github.com/yourusername/roman-numeral-converter.git
+```
 
-### `npm run build`
+2. Install all dependencies
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+npm install
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. Running it locally
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+npm start
+```
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Engineering and Testing Methodology
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Engineering Approach
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+This project uses **React** to manage the application’s UI and **Adobe React Spectrum** as the design system for consistent styling and Theme management as well as the ready to go component.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- **Component Design**: Components are modular and reusable. The main components include `NumberConverterForm`, `Navbar`, and `ErrorBoundary`.
+- **Custom Hooks**: The project uses custom hooks like `useRomanNumeralConverter` for the logic of converting numbers to Roman numerals thugh an api call and `useTheme` for managing dark mode. Those Custom Hooks will increase the reuse ability.
+- **State Management**: We use React's `useState` for local state and context (`ThemeContext`) for managing global app state (such as dark/light mode). Redux will be another good option to use if the project size is getting bigger in the futrue.
 
-## Learn More
+### Testing Methodology
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- **Unit Tests**: We use **Jest** and **React Testing Library** to test components, hooks, and functions. Tests are designed to cover valid input, error handling, edge cases, and interactions.
+- **Integration Tests**:
+- **Error Handling**: Tests validate graceful error handling when invalid inputs or server failures occur.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Running Tests
+
+To run the tests:
+
+```bash
+npm test
+
+```
+
+This will run all tests and show the results in the terminal. We also use code coverage to ensure that critical logic is well-tested.
+
+---
+
+## Packaging Layout
+
+The project is organized as follows:
+
+```plaintext
+root
+├─ src
+│  ├─ components
+│  │  ├─ Navbar
+│  │  │  ├─ Navbar.tsx
+│  │  │  └─ Navbar.test.tsx
+│  │  ├─ ConverterCard
+│  │  │  ├─ NumberConverterForm.tsx
+│  │  │  └─ NumberConverterForm.test.tsx
+│  │  ├─ ErrorBoundary.tsx
+│  ├─ context
+│  │  └─ ThemeContext.tsx
+│  ├─ lib
+│  │  └─ hooks
+│  │     ├─ useRomanNumeralConverter.ts
+│  │     └─ useTheme.ts
+│  ├─ App.tsx
+│  ├─ index.tsx
+│  ├─ index.css
+│  ├─ reportWebVitals.ts
+│  └─ setupTests.ts
+├─ public
+│  ├─ index.html
+│  └─ favicon.ico
+├─ package.json
+├─ package-lock.json
+├─ README.md
+├─ .gitignore
+└─ tsconfig.json
+
+
+```
+
+- **`src/components/`**: Contains all the React components of the app.
+- **`src/context/`**: Contains the context files for global state management (e.g., theme).
+- **`src/lib/hooks/`**: Contains custom hooks for reusable logic (e.g., Roman numeral conversion).
+- **`src/App.tsx`**: The main application component that ties together the UI and logic.
+- **`tests/`**: Contains unit and integration tests.
+
+---
+
+## Dependency Attribution
+
+### Why Adobe React Spectrum?
+
+#### Key Benefits I found so far:
+
+- **Ease of Use**: Pretty good ready to use component with consistent styling.
+- **Dark Mode Support**: The `Provider` component in Spectrum is pretty good for theme management and really straightforward to implement dark mode and light mode without a lot of styling.
+- **Customization**:For the theme while Adobe Spectrum comes with a default theme, it can be easily customized to fit the project’s needs. Also provide set of react hooks that make it super easy to create your own components
+
+### Other Dependencies:
+
+- **React**: Used for building the user interface and managing the component lifecycle.
+- **@adobe/react-spectrum**: UI component library for React, providing accessibility-focused components.
+- **Jest**: A testing framework used for unit and integration tests.
+- **React Testing Library**: A library for testing React components in a way that resembles how users interact with them.
+- **TypeScript**: For type safety and enhanced developer experience.
+
+### DevDependencies:
+
+- **@testing-library/jest-dom**: Extends Jest's assertions with DOM-specific matchers.
+- **@types/react, @types/jest**: Provides TypeScript typings for React and Jest.
+- **identity-obj-proxy**: Helps with styling during tests.
+
+---
