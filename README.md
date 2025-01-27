@@ -67,36 +67,40 @@ This will run all tests and show the results in the terminal. We also use code c
 The project is organized as follows:
 
 ```plaintext
-src/
-components/
-Navbar/
-Navbar.tsx
-Navbar.test.tsx
-ConverterCard/
-NumberConverterForm.tsx
-NumberConverterForm.test.tsx
-ErrorBoundary.tsx
-context/
-ThemeContext.tsx
-lib/
-hooks/
-useRomanNumeralConverter.ts
-useTheme.ts
-App.tsx
-index.tsx
-index.css
-reportWebVitals.ts
-setupTests.ts
-public/
-index.html
-favicon.ico
-package.json
-README.md
-.gitignore
-tsconfig.json
+root
+├─ src
+│  ├─ components
+│  │  ├─ Navbar
+│  │  │  ├─ Navbar.tsx
+│  │  │  └─ Navbar.test.tsx
+│  │  ├─ ConverterCard
+│  │  │  ├─ NumberConverterForm.tsx
+│  │  │  └─ NumberConverterForm.test.tsx
+│  │  ├─ ErrorBoundary.tsx
+│  ├─ context
+│  │  └─ ThemeContext.tsx
+│  ├─ lib
+│  │  └─ hooks
+│  │     ├─ useRomanNumeralConverter.ts
+│  │     └─ useTheme.ts
+│  ├─ App.tsx
+│  ├─ index.tsx
+│  ├─ index.css
+│  ├─ reportWebVitals.ts
+│  └─ setupTests.ts
+├─ public
+│  ├─ index.html
+│  └─ favicon.ico
+├─ package.json
+├─ package-lock.json
+├─ README.md
+├─ .gitignore
+└─ tsconfig.json
+
+
 ```
 
-- **`src/components/`**: Contains all the presentational components of the app.
+- **`src/components/`**: Contains all the React components of the app.
 - **`src/context/`**: Contains the context files for global state management (e.g., theme).
 - **`src/lib/hooks/`**: Contains custom hooks for reusable logic (e.g., Roman numeral conversion).
 - **`src/App.tsx`**: The main application component that ties together the UI and logic.
