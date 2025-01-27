@@ -7,6 +7,7 @@ const useRomanNumeralConverter = () => {
   const [loading, setLoading] = useState<boolean>(false);
 
   const fetchRomanNumeral = async (input: number): Promise<void> => {
+    // set state to default
     setError('');
     setResult('');
     setLoading(true);
@@ -15,11 +16,12 @@ const useRomanNumeralConverter = () => {
       const res = await fetch(
         `http://localhost:8080/romannumeral?number=${input}`
       );
-
+      // handle error
       if (!res.ok) {
         const errorText = await res.text();
         throw new Error(errorText || 'Failed to fetch conversion');
       }
+      // Get data
       const data: RomanNumeralResponse = await res.json();
       setResult(data.output);
     } catch (err: any) {
@@ -28,7 +30,7 @@ const useRomanNumeralConverter = () => {
       setLoading(false);
     }
   };
-
+  // Return the states and the fetch function to be used in the component
   return { result, error, loading, fetchRomanNumeral };
 };
 
