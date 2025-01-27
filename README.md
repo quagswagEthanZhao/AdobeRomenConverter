@@ -33,6 +33,38 @@ npm start
 
 ---
 
+## Dockerization
+
+To make the project easy to deploy in any environment, this application has been Dockerized. Docker allows you to package the app along with its dependencies in a container, making it easier to run on any system without worrying about specific configurations.
+
+### Prerequisites
+
+Before running the Docker container, make sure you have **Docker** installed on your machine. You can download Docker from [here](https://www.docker.com/products/docker-desktop).
+
+### Building the Docker Image
+
+To build the Docker image for the project, follow these steps:
+
+1. **Build the Docker Image**:
+
+   In the root directory of your project, run the following command:
+
+   ```bash
+   docker build -t roman-numeral-converter-client .
+
+   ```
+
+   After building the image, you can run the Docker container with the following command:
+
+   ```bash
+   docker run -p 3000:3000 oman-numeral-converter-client
+
+   ```
+
+   This command runs the container and maps port 3000 inside the container to port 3000 on your local machine, making the app accessible at http://localhost:3000.
+
+---
+
 ## Engineering and Testing Methodology
 
 ### Engineering Approach
