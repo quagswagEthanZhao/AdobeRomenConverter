@@ -66,6 +66,7 @@ This will run all tests and show the results in the terminal. We also use code c
 
 The project is organized as follows:
 
+```plaintext
 src/
 components/
 Navbar/
@@ -93,6 +94,7 @@ package.json
 README.md
 .gitignore
 tsconfig.json
+```
 
 - **`src/components/`**: Contains all the presentational components of the app.
 - **`src/context/`**: Contains the context files for global state management (e.g., theme).
