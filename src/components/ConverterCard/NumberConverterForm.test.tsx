@@ -115,6 +115,26 @@ describe('NumberConverterForm Component', () => {
     expect(mockFetchRomanNumeral).not.toHaveBeenCalled();
   });
 
+  it('No leading 0 are allowed in the input', async () => {
+    renderWithProvider();
+
+    const input = screen.getByLabelText('Enter a number') as HTMLInputElement;
+
+    // Type in a number with leading 0
+    await userEvent.clear(input);
+    await userEvent.type(input, '00123');
+
+    // assert that leading 0 are deleted
+    expect(input.value).toBe('123');
+
+    // clear input and type in something with no leading 0
+    await userEvent.clear(input);
+    await userEvent.type(input, '1230');
+
+    // assert that 0 will not be remved when its not a leading 0
+    expect(input.value).toBe('1230');
+  });
+
   it('displays the Roman numeral result when available', () => {
     renderWithProvider();
 

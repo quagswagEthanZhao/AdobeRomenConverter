@@ -9,43 +9,27 @@ import {
 } from '@adobe/react-spectrum';
 import useRomanNumeralConverter from '../../lib/hooks/useRomanNumeralConverter';
 import { useTheme } from '../../lib/hooks/useTheme';
+import useInputValidation from '../../lib/hooks/useNumberInputValidation';
 
 const NumberConverterForm: React.FC = (): React.JSX.Element => {
-  const [input, setInput] = useState<string>('');
-  const [validationState, setValidationState] = useState<
-    'valid' | 'invalid' | undefined
-  >(undefined);
-  const [errorMessage, setErrorMessage] = useState<string | undefined>();
   const { result, loading, error, fetchRomanNumeral } =
     useRomanNumeralConverter();
   const { isDarkMode } = useTheme();
-  const handleInputChange = (value: string) => {
-    setInput(value);
+  const {
+    input: inputValue,
+    validationState: inputValidationState,
+    errorMessage: inputErrorMessage,
+    handleInputChange,
+  } = useInputValidation('');
 
-    const parsedValue = parseInt(value, 10);
-
-    if (value === '' || isNaN(parsedValue)) {
-      setValidationState('invalid');
-      setErrorMessage('Input must be a valid number.');
-      return;
-    }
-
-    if (parsedValue < 1 || parsedValue > 3999) {
-      setValidationState('invalid');
-      setErrorMessage('Input must be an integer between 1 and 3999.');
-      return;
-    }
-
-    setValidationState('valid');
-    setErrorMessage(undefined); // Clear error message if input is valid
-  };
-
+  // function to handle the convert button click
   const handleConvert = async (_: any) => {
-    const num = parseInt(input);
-    if (validationState === 'valid' && num >= 1 && num <= 3999) {
+    const num = parseInt(inputValue);
+    if (inputValidationState === 'valid' && num >= 1 && num <= 3999) {
       await fetchRomanNumeral(num); // Call the exposed fetch function
     }
   };
+
   return (
     <View
       padding="size-300"
@@ -62,17 +46,17 @@ const NumberConverterForm: React.FC = (): React.JSX.Element => {
         </Heading>
         <TextField
           label="Enter a number"
-          value={String(input)}
+          value={String(inputValue)}
           onChange={handleInputChange}
           type="number"
           width="60%"
-          validationState={validationState}
-          errorMessage={errorMessage}
+          validationState={inputValidationState}
+          errorMessage={inputErrorMessage}
         />
         <Button
           variant={isDarkMode ? 'primary' : 'cta'}
           onPress={handleConvert}
-          isDisabled={loading || validationState !== 'valid'}
+          isDisabled={loading || inputValidationState !== 'valid'}
         >
           Convert to Roman Numeral
         </Button>
