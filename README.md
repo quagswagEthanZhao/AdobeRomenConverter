@@ -36,7 +36,7 @@ To run this project, you’ll need:
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/roman-numeral-converter.git
+git clone https://github.com/quagswagEthanZhao/AdobeRomenConverter-Client.git
 ```
 
 2. Install all dependencies
