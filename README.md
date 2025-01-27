@@ -2,6 +2,26 @@
 
 This project is a **Roman Numeral Converter** client application that is built using **React** and **Adobe React Spectrum** for the front-end UI. The application allows users to input a number, and it converts it into its Roman numeral equivalent. It also provides real-time front-end validation and error handling.
 
+## Table of Contents
+
+1. [How to Build and Run Your Project](#how-to-build-and-run-your-project)
+   - [Prerequisites](#prerequisites)
+   - [For Local Development](#for-local-development)
+2. [Dockerization](#dockerization)
+   - [Prerequisites](#prerequisites-1)
+   - [Building the Docker Image](#building-the-docker-image)
+3. [Engineering and Testing Methodology](#engineering-and-testing-methodology)
+   - [Engineering Approach](#engineering-approach)
+   - [Testing Methodology](#testing-methodology)
+   - [Running Tests](#running-tests)
+4. [Packaging Layout](#packaging-layout)
+5. [Dependency Attribution](#dependency-attribution)
+   - [Why Adobe React Spectrum?](#why-adobe-react-spectrum)
+   - [Other Dependencies](#other-dependencies)
+   - [DevDependencies](#devdependencies)
+
+---
+
 ## How to Build and Run Your Project
 
 ### Prerequisites
@@ -57,7 +77,7 @@ To build the Docker image for the project, follow these steps:
    After building the image, you can run the Docker container with the following command:
 
    ```bash
-   docker run -p 3000:3000 oman-numeral-converter-client
+   docker run -p 3000:3000 roman-numeral-converter-client
 
    ```
 
