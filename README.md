@@ -156,7 +156,6 @@ root
 - **`src/context/`**: Contains the context files for global state management (e.g., theme).
 - **`src/lib/hooks/`**: Contains custom hooks for reusable logic (e.g., Roman numeral conversion).
 - **`src/App.tsx`**: The main application component that ties together the UI and logic.
-- **`tests/`**: Contains unit and integration tests.
 
 ---
 
